@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.0 on win32)" generated="20220527 12:46:39.747" rpa="false" schemaversion="3">
+<suite id="s1" name="TC2" source="C:\Users\mikem\PycharmProjects\RoborFramework\test_cases\TC2.robot">
+<test id="s1-t1" name="POST_home_page" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220527 12:46:39.919" level="INFO">Creating Session using : alias=mysession, url=https://robotframework.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220527 12:46:39.919" endtime="20220527 12:46:39.919"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${base_URL}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220527 12:46:40.201" level="INFO">POST Request : url=https://robotframework.org/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220527 12:46:40.216" level="INFO">POST Response : url=https://robotframework.org/ 
+ status=405, reason=Method Not Allowed 
+ headers={'Connection': 'close', 'Content-Length': '131', 'Server': 'Varnish', 'Retry-After': '0', 'Accept-Ranges': 'bytes', 'Date': 'Fri, 27 May 2022 09:46:40 GMT', 'Via': '1.1 varnish', 'X-Served-By': 'cache-fra19141-FRA', 'X-Cache': 'MISS', 'X-Cache-Hits': '0', 'X-Timer': 'S1653644801.685500,VS0,VE0', 'X-Fastly-Request-ID': '5b2050d9c6c59d9aebed1c9ea46853998be19e8b'} 
+ body=&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor="white"&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20220527 12:46:40.216" level="INFO">C:\Users\mikem\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'robotframework.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220527 12:46:40.216" level="FAIL">HTTPError: 405 Client Error: Method Not Allowed for url: https://robotframework.org/</msg>
+<status status="FAIL" starttime="20220527 12:46:39.919" endtime="20220527 12:46:40.216"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20220527 12:46:40.216" endtime="20220527 12:46:40.216"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>405 Client Error</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20220527 12:46:40.216" endtime="20220527 12:46:40.216"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220527 12:46:40.216" endtime="20220527 12:46:40.216"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20220527 12:46:40.216" endtime="20220527 12:46:40.216"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${body}</arg>
+<arg>405 Not Allowed</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20220527 12:46:40.216" endtime="20220527 12:46:40.216"/>
+</kw>
+<status status="FAIL" starttime="20220527 12:46:39.919" endtime="20220527 12:46:40.216">HTTPError: 405 Client Error: Method Not Allowed for url: https://robotframework.org/</status>
+</test>
+<status status="FAIL" starttime="20220527 12:46:39.747" endtime="20220527 12:46:40.232"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TC2">TC2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
